@@ -26,6 +26,12 @@ private:
 	void OnMoveForward(float Axis);
 	void OnMoveRight(float Axis);
 
+	void OnTurn(float Axis);
+	void OnLookUp(float Axis);
+
+	void OnSprint();
+	void OffSprint();
+
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
 		USpringArmComponent* SpringArmComp;
