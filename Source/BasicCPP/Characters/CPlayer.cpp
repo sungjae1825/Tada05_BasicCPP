@@ -24,9 +24,6 @@ ACPlayer::ACPlayer()
 		GetMesh()->SetAnimInstanceClass(AnimInstanceClass.Class);
 	}
 
-	
-	UAnimInstance::StaticClass();
-
 	//SpringArm Comp
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>("SpringArmComp");
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
@@ -46,7 +43,7 @@ ACPlayer::ACPlayer()
 void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 }
 
 void ACPlayer::Tick(float DeltaTime)
@@ -65,14 +62,14 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis("Turn", this, &ACPlayer::OnTurn);
 	PlayerInputComponent->BindAxis("LookUp", this, &ACPlayer::OnLookUp);
 
-	PlayerInputComponent->BindAction("Sprint", EInputEvent::IE_Pressed, this, &ACPlayer::OnSprint);
-	PlayerInputComponent->BindAction("Sprint", EInputEvent::IE_Released, this, &ACPlayer::OffSprint);
+	PlayerInputComponent->BindAction("Sprint", IE_Pressed, this, &ACPlayer::OnSprint);
+	PlayerInputComponent->BindAction("Sprint", IE_Released, this, &ACPlayer::OffSprint);
 }
 
 void ACPlayer::OnMoveForward(float Axis)
 {
 	FRotator ControlRot = FRotator(0, GetControlRotation().Yaw, 0);
-	FVector Direction = FQuat(ControlRot).GetForwardVector().GetSafeNormal2D();
+	FVector Direction =  FQuat(ControlRot).GetForwardVector().GetSafeNormal2D();
 
 	AddMovementInput(Direction, Axis);
 }

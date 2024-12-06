@@ -12,12 +12,10 @@ class BASICCPP_API UCAnimInstance : public UAnimInstance
 protected:
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 	virtual void NativeBeginPlay() override;
-
+	
 protected:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "OwnerPawn")
-	float  speed;
-
-
+	float Speed;
 
 private:
 	APawn* OwnerPawn;

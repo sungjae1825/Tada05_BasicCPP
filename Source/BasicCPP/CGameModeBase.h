@@ -4,7 +4,6 @@
 #include "GameFramework/GameModeBase.h"
 #include "CGameModeBase.generated.h"
 
-
 UCLASS()
 class BASICCPP_API ACGameModeBase : public AGameModeBase
 {

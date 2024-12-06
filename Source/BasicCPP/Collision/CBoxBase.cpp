@@ -17,12 +17,12 @@ ACBoxBase::ACBoxBase()
 	TextRenderComp->SetRelativeLocation(FVector(0, 0, 100));
 	TextRenderComp->SetRelativeRotation(FRotator(0, 180, 0));
 	TextRenderComp->SetTextRenderColor(FColor::Black);
+	TextRenderComp->SetHorizontalAlignment(EHTA_Center);
 	TextRenderComp->SetText(GetName());
-	//Todo. ºôµå X	//T
 }
 
 void ACBoxBase::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 }

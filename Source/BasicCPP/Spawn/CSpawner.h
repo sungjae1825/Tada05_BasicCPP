@@ -28,5 +28,6 @@ private:
 	TSubclassOf<ACStaticMeshBase> ClassesToSpawn[4];
 
 private:
-	ACStaticMeshBase* SpawnedObjects[4];
+	ACStaticMeshBase* SpawendObjects[4];
+
 };

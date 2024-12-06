@@ -18,7 +18,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:
+public:	
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -34,8 +34,8 @@ private:
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USpringArmComponent* SpringArmComp;
+	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		UCameraComponent* CameraComp;
+	UCameraComponent* CameraComp;
 };

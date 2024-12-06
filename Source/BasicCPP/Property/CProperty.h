@@ -8,34 +8,34 @@ UCLASS()
 class BASICCPP_API ACProperty : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	ACProperty();
 
 protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "MyVariable")
-		int32 NumberA;
+	int32 NumberA;
 
 	UPROPERTY(VisibleInstanceOnly, Category = "MyVariable")
-		int32 NumberB;
+	int32 NumberB;
 
 	UPROPERTY(VisibleAnywhere, Category = "MyVariable")
-		int32 NumberC;
+	int32 NumberC;
 
 
 	UPROPERTY(EditDefaultsOnly, Category = "MyVariable")
-		float RealA;
+	float RealA;
 
 	UPROPERTY(EditInstanceOnly, Category = "MyVariable")
-		float RealB;
+	float RealB;
 
 	UPROPERTY(EditAnywhere, Category = "MyVariable")
-		float RealC;
+	float RealC;
 
 protected:
 	//Type your name ^_^
 	UPROPERTY(BlueprintReadOnly, VisibleDefaultsOnly, Category = "MyVariable")
-		FString MyName;
+	FString MyName;
 };

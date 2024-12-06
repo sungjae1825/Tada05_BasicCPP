@@ -10,7 +10,7 @@ ACLogTest::ACLogTest()
 void ACLogTest::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	CLog::Print(777);
 	CLog::Print(888, 1);
 	CLog::Print(999, 2, 20.f);
@@ -25,7 +25,9 @@ void ACLogTest::BeginPlay()
 	CLog::Log(FVector(100, 100, 100));
 	CLog::Log(FRotator(90, 90, 90));
 	CLog::Log(__FILE__);
+	//CLog::Log(__FUNCTION__, __LINE__);
 	PrintLine();
+	
 }
 
 void ACLogTest::Tick(float DeltaTime)

@@ -8,5 +8,5 @@ ACGameModeBase::ACGameModeBase()
 	{
 		DefaultPawnClass = PlayerClass.Class;
 	}
-	
+
 }

@@ -26,31 +26,31 @@ void ACSpawner::BeginPlay()
 			continue;
 		}
 
-		SpawnedObjects[i] = GetWorld()->SpawnActor<ACStaticMeshBase>(ClassesToSpawn[i], TM);
+		SpawendObjects[i] = GetWorld()->SpawnActor<ACStaticMeshBase>(ClassesToSpawn[i], TM);
 
 		FVector Origin = GetActorLocation();
-		SpawnedObjects[i]->SetActorLocation(Origin + FVector(0, i * 200, 0));
+		SpawendObjects[i]->SetActorLocation(Origin + FVector(0, i * 200, 0));
 	}
 
 	//Change Color
-
+	
 	FTimerHandle ChagneColorTimer;
 	FTimerDelegate TimerDelegate;
-	TimerDelegate.BindLambda([&]()
+	TimerDelegate.BindLambda([&]() 
+	{
+		for (const auto& Object : SpawendObjects)
 		{
-			for (const auto& Object : SpawnedObjects)
+			UStaticMeshComponent* MeshComp = Cast<UStaticMeshComponent>(Object->GetComponentByClass(UStaticMeshComponent::StaticClass()));
+			if (MeshComp)
 			{
-				UStaticMeshComponent* MeshComp = Cast<UStaticMeshComponent>(Object->GetComponentByClass(UStaticMeshComponent::StaticClass()));
-				if (MeshComp)
-				{
-					FVector RandomVector = UKismetMathLibrary::RandomUnitVector();
+				FVector RandomVector = UKismetMathLibrary::RandomUnitVector();
+				
+				MeshComp->SetVectorParameterValueOnMaterials("BaseColor", RandomVector);
 
-					MeshComp->SetVectorParameterValueOnMaterials("BaseColor", RandomVector);
-
-					MeshComp->SetScalarParameterValueOnMaterials("Metallic", RandomVector.X);
-					MeshComp->SetScalarParameterValueOnMaterials("Roughness", RandomVector.Y);
-				}
+				MeshComp->SetScalarParameterValueOnMaterials("Metallic", RandomVector.X);
+				MeshComp->SetScalarParameterValueOnMaterials("Roughness", RandomVector.Y);
 			}
-		});
+		}
+	});
 	GetWorld()->GetTimerManager().SetTimer(ChagneColorTimer, TimerDelegate, 1.f, true);
 }

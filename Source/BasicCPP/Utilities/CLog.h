@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 
-#define PrintLine() {CLog::Log(__FUNCTION__, __LINE__);}
+#define PrintLine(){ CLog::Log(__FUNCTION__, __LINE__); }
 
 class CLog
 {
@@ -13,14 +13,11 @@ public:
 	static void Print(const FVector& InValue, int32 InKey = -1, float InDuration = 10.f, FColor InColor = FColor::Black);
 	static void Print(const FRotator& InValue, int32 InKey = -1, float InDuration = 10.f, FColor InColor = FColor::Black);
 
-	static void Log(int32 InValue);	//CLog::Log
-	static void Log(float InValue);	//CLog::Log
-	static void Log(const FString& InValue);	//CLog::Log
-	static void Log(const FVector& InValue);	//CLog::Log
-	static void Log(const FRotator& InValue);	//CLog::Log
-	static void Log(UObject* InObject);	//CLog::Log
-	static void Log(const FString& InFuncName, int32 InLineNumber);	//CLog::Log
-
+	static void Log(int32 InValue);
+	static void Log(float InValue);
+	static void Log(const FString& InValue);
+	static void Log(const FVector& InValue);
+	static void Log(const FRotator& InValue);
+	static void Log(UObject* InObject);
+	static void Log(const FString& InFuncName, int32 InLineNumber);
 };
-
-//DrawDebug

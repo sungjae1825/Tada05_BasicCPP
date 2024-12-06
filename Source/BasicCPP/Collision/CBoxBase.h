@@ -26,5 +26,5 @@ protected:
 	UBoxComponent* BoxComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		UTextRenderComponent* TextRenderComp;
+	UTextRenderComponent* TextRenderComp;
 };

@@ -63,7 +63,6 @@ void CLog::Log(UObject* InObject)
 	Message.Append(InObject ? " is not null" : "NULL");
 
 	UE_LOG(GamePlay, Warning, TEXT("%s"), *Message);
-
 }
 
 void CLog::Log(const FString& InFuncName, int32 InLineNumber)

@@ -1,6 +1,5 @@
 #include "CAnimInstance.h"
 
-
 void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
@@ -10,9 +9,7 @@ void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		return;
 	}
 
-	
-
-	float Speed = OwnerPawn->GetVelocity().Size2D();
+	Speed = OwnerPawn->GetVelocity().Size2D();
 }
 
 void UCAnimInstance::NativeBeginPlay()
