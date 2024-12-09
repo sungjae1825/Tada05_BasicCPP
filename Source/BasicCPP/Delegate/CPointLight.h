@@ -21,14 +21,17 @@ private:
 	void OnLights();
 	void OffLights();
 
+	UFUNCTION()
+		FString SetLight1Color(FLinearColor InColor);
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-	USceneComponent* RootComp;
+		USceneComponent* RootComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-	UPointLightComponent* LightComp1;
+		UPointLightComponent* LightComp1;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-	UPointLightComponent* LightComp2;
+		UPointLightComponent* LightComp2;
+
 };
