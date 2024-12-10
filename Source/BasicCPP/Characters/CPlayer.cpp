@@ -43,7 +43,7 @@ ACPlayer::ACPlayer()
 void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 void ACPlayer::Tick(float DeltaTime)
@@ -69,7 +69,7 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ACPlayer::OnMoveForward(float Axis)
 {
 	FRotator ControlRot = FRotator(0, GetControlRotation().Yaw, 0);
-	FVector Direction =  FQuat(ControlRot).GetForwardVector().GetSafeNormal2D();
+	FVector Direction = FQuat(ControlRot).GetForwardVector().GetSafeNormal2D();
 
 	AddMovementInput(Direction, Axis);
 }
@@ -101,3 +101,10 @@ void ACPlayer::OffSprint()
 {
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
 }
+
+void ACPlayer::SetBodyColor(FLinearColor InColor)
+{
+	FVector BodyColor = FVector(InColor.R, InColor.G, InColor.B);
+	GetMesh()->SetVectorParameterValueOnMaterials("BodyColor", BodyColor);
+}
+
