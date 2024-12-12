@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Weapons/CAR4.h"
 
 ACPlayer::ACPlayer()
 {
@@ -38,11 +39,27 @@ ACPlayer::ACPlayer()
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	bUseControllerRotationYaw = false;
+
+	ConstructorHelpers::FClassFinder<ACAR4> WeaponClass(TEXT("/Game/Player/BP_CAR4"));
+	if (WeaponClass.Succeeded())
+	{
+		AR4Class = WeaponClass.Class;
+	}
 }
 
 void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	
+
+	if (AR4Class)
+	{
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.Owner = this;
+		AR4 = GetWorld()->SpawnActor<ACAR4>(SpawnParams);
+	}
+	
 
 }
 
@@ -64,6 +81,8 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAction("Sprint", IE_Pressed, this, &ACPlayer::OnSprint);
 	PlayerInputComponent->BindAction("Sprint", IE_Released, this, &ACPlayer::OffSprint);
+
+	PlayerInputComponent->BindAction("Rifle", IE_Pressed, this, &ACPlayer::OnRifle);
 }
 
 void ACPlayer::OnMoveForward(float Axis)
@@ -102,9 +121,13 @@ void ACPlayer::OffSprint()
 	GetCharacterMovement()->MaxWalkSpeed = 400.f;
 }
 
+void ACPlayer::OnRifle()
+{
+}
+
 void ACPlayer::SetBodyColor(FLinearColor InColor)
 {
 	FVector BodyColor = FVector(InColor.R, InColor.G, InColor.B);
+
 	GetMesh()->SetVectorParameterValueOnMaterials("BodyColor", BodyColor);
 }
-

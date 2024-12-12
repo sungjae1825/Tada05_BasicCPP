@@ -6,6 +6,7 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class AR4Class;
 
 UCLASS()
 class BASICCPP_API ACPlayer : public ACharacter
@@ -31,6 +32,8 @@ private:
 
 	void OnSprint();
 	void OffSprint();
+	void OnRifle();
+
 
 public:
 	UFUNCTION(BlueprintCallable)
@@ -42,4 +45,9 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
 		UCameraComponent* CameraComp;
+
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "Weapons")
+	TSubclassOf<ACAR4> AR4Class;
+
 };

@@ -1,10 +1,23 @@
 #include "CSphereTrace.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Particles/ParticleSystemComponent.h"
 
 ACSphereTrace::ACSphereTrace()
 {
 	RootComp = CreateDefaultSubobject<USceneComponent>("RootComp");
 	RootComponent = RootComp;
+
+	ParticleComp = CreateDefaultSubobject<UParticleSystemComponent>("ParticleComp");
+	ParticleComp->SetupAttachment(RootComp);
+
+	ConstructorHelpers::FObjectFinder<UParticleSystem> ParticleAsset(TEXT("/Game/Explosions/Particles/P_ImpactExplosion6"));
+	if (ParticleAsset.Succeeded())
+	{
+		ParticleComp->SetTemplate(ParticleAsset.Object);
+	}
+
+	ParticleComp->bAutoActivate = false;
+
 }
 
 void ACSphereTrace::BeginOverlap(AActor* OverlappedActor, AActor* OtherActor)
@@ -33,16 +46,16 @@ void ACSphereTrace::BeginOverlap(AActor* OverlappedActor, AActor* OtherActor)
 		true
 	))
 	{
+		ParticleComp->ResetParticles();
+		ParticleComp->SetActive(true);
+
 		for (const auto& Hit : Hits)
 		{
 			UPrimitiveComponent* OtherComp = Hit.GetComponent();
 			if (OtherComp->IsSimulatingPhysics())
 			{
-
-				OtherComp->AddRadiusImpulse(Start, 1000.f, 15e6 / OtherComp->GetMass(), ERadialImpulseFalloff::RIF_Constant);
+				OtherComp->AddRadialImpulse(Start, 1000.f, 15e4 / OtherComp->GetMass(), ERadialImpulseFalloff::RIF_Constant);
 			}
-
-			
 		}
 	}
 }
