@@ -14,6 +14,7 @@ public:
 
 
 protected:
-	UPROPERTY(VisibleDefaultsOnly, Category = "Component")
-		UStaticMeshComponent* MeshComp;
+	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
+	UStaticMeshComponent* MeshComp;
+
 };

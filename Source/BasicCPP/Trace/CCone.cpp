@@ -2,7 +2,7 @@
 
 ACCone::ACCone()
 {
-	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>("MeshComp");
+	MeshComp =  CreateDefaultSubobject<UStaticMeshComponent>("MeshComp");
 	RootComponent = MeshComp;
 
 	MeshComp->SetRelativeScale3D(FVector(0.5f));

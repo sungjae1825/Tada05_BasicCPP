@@ -27,18 +27,19 @@ ACSpotLight::ACSpotLight()
 void ACSpotLight::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	TArray<AActor*> Actors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACMulticast::StaticClass(), Actors);
 
 	if (Actors.Num() > 0)
 	{
 		ACMulticast* Trigger = Cast<ACMulticast>(Actors[0]);
-		
+
 		if (Trigger)
 		{
 			Trigger->OnMulticastOverlap.AddUFunction(this, "OnLight");
 		}
+
 	}
 }
 

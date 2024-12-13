@@ -11,12 +11,12 @@ ACParticle::ACParticle()
 void ACParticle::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	TArray<AActor*> Actors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACEvent::StaticClass(), Actors);
 
 	if (Actors.Num() < 1) return;
-
+	
 	ACEvent* Trigger = Cast<ACEvent>(Actors[0]);
 	if (Trigger)
 	{

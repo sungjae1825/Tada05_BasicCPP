@@ -26,7 +26,7 @@ ACPointLight::ACPointLight()
 void ACPointLight::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	LightComp1->SetVisibility(false);
 	LightComp2->SetVisibility(false);
 

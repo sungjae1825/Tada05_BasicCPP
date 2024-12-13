@@ -74,9 +74,9 @@ void ACCube::Falling(int32 InIndex, FLinearColor InColor)
 		MeshComps[i]->SetWorldLocation(OriginLocations[i]);
 		MeshComps[i]->SetSimulatePhysics(false);
 	}
-
+	
 	MeshComps[InIndex]->SetSimulatePhysics(true);
-
+	
 	FVector Vector = FVector(InColor.R, InColor.G, InColor.B);
 	MeshComps[InIndex]->SetVectorParameterValueOnMaterials("BaseColor", Vector);
 

@@ -40,27 +40,25 @@ ACPlayer::ACPlayer()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	bUseControllerRotationYaw = false;
 
+	//Weapon Class
 	ConstructorHelpers::FClassFinder<ACAR4> WeaponClass(TEXT("/Game/Player/BP_CAR4"));
 	if (WeaponClass.Succeeded())
 	{
 		AR4Class = WeaponClass.Class;
 	}
+
 }
 
 void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-
 	
-
 	if (AR4Class)
 	{
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.Owner = this;
-		AR4 = GetWorld()->SpawnActor<ACAR4>(SpawnParams);
+		AR4 = GetWorld()->SpawnActor<ACAR4>(AR4Class, SpawnParams);
 	}
-	
-
 }
 
 void ACPlayer::Tick(float DeltaTime)
@@ -88,7 +86,7 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ACPlayer::OnMoveForward(float Axis)
 {
 	FRotator ControlRot = FRotator(0, GetControlRotation().Yaw, 0);
-	FVector Direction = FQuat(ControlRot).GetForwardVector().GetSafeNormal2D();
+	FVector Direction =  FQuat(ControlRot).GetForwardVector().GetSafeNormal2D();
 
 	AddMovementInput(Direction, Axis);
 }
@@ -123,6 +121,13 @@ void ACPlayer::OffSprint()
 
 void ACPlayer::OnRifle()
 {
+	if (AR4->IsEquipped())
+	{
+		AR4->Unequip();
+		return;
+	}
+
+	AR4->Equip();
 }
 
 void ACPlayer::SetBodyColor(FLinearColor InColor)

@@ -17,15 +17,15 @@ protected:
 
 private:
 	UFUNCTION()
-		void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
 
 	UFUNCTION()
-		void EndOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	void EndOverlap(AActor* OverlappedActor, AActor* OtherActor);
 
 public:
 	FBoxTriggerOveralp OnBoxTriggerBeginOveralp;
 	FBoxTriggerOveralp OnBoxTriggerEndOveralp;
 
 	FBoxTriggerOveralpOneParam OnBoxTriggerOveralpOneParam;
-
+	
 };

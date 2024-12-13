@@ -11,5 +11,5 @@ class BASICCPP_API ACSphereTrace_Trigger : public ACBoxBase
 
 protected:
 	virtual void BeginPlay() override;
-
+	
 };

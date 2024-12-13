@@ -19,7 +19,7 @@ ACLineTrace::ACLineTrace()
 void ACLineTrace::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	if (VertexClass)
 	{
 		TArray<AActor*> Actors;

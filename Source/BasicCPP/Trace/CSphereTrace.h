@@ -10,19 +10,19 @@ UCLASS()
 class BASICCPP_API ACSphereTrace : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	ACSphereTrace();
 
 public:
 	UFUNCTION()
-		void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	void BeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USceneComponent* RootComp;
+	USceneComponent* RootComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		UParticleSystemComponent* ParticleComp;
+	UParticleSystemComponent* ParticleComp;
 
 };

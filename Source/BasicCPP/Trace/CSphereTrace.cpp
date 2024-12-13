@@ -4,13 +4,13 @@
 
 ACSphereTrace::ACSphereTrace()
 {
-	RootComp = CreateDefaultSubobject<USceneComponent>("RootComp");
+	RootComp =  CreateDefaultSubobject<USceneComponent>("RootComp");
 	RootComponent = RootComp;
 
 	ParticleComp = CreateDefaultSubobject<UParticleSystemComponent>("ParticleComp");
 	ParticleComp->SetupAttachment(RootComp);
 
-	ConstructorHelpers::FObjectFinder<UParticleSystem> ParticleAsset(TEXT("/Game/Explosions/Particles/P_ImpactExplosion6"));
+	ConstructorHelpers::FObjectFinder<UParticleSystem> ParticleAsset(TEXT("/Game/Explosions/Particles/P_ImpactExplosion4"));
 	if (ParticleAsset.Succeeded())
 	{
 		ParticleComp->SetTemplate(ParticleAsset.Object);

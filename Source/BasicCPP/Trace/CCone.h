@@ -8,11 +8,11 @@ UCLASS()
 class BASICCPP_API ACCone : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	ACCone();
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		UStaticMeshComponent* MeshComp;
+	UStaticMeshComponent* MeshComp;
 };

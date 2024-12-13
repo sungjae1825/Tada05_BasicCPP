@@ -8,8 +8,8 @@ UCLASS()
 class BASICCPP_API ACCube : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	ACCube();
 
 protected:
@@ -17,14 +17,14 @@ protected:
 
 private:
 	UFUNCTION()
-		void Falling(int32 InIndex, FLinearColor InColor);
+	void Falling(int32 InIndex, FLinearColor InColor);
 
 private:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USceneComponent* RootComp;
+	USceneComponent* RootComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		UStaticMeshComponent* MeshComps[3];
+	UStaticMeshComponent* MeshComps[3];
 
 private:
 	FVector OriginLocations[3];

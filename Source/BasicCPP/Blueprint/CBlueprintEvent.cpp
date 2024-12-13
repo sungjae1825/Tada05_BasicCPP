@@ -2,7 +2,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Characters/CPlayer.h"
 
-void ACBlueprintEvent::BeginPlay()
+void ACBlueprintEvent::BeginPlay() 
 {
 	Super::BeginPlay();
 
@@ -25,5 +25,5 @@ void ACBlueprintEvent::ResetBodyColor_Implementation()
 	ACPlayer* Player = Cast<ACPlayer>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0));
 	if (!Player) return;
 
-	Player->SetBodyColor(FLinearColor(0.450980, 0.403922, 0.360784));
+	Player->SetBodyColor(FLinearColor(0.45098f,0.403922f, 0.360784f));
 }

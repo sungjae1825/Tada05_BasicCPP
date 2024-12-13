@@ -7,7 +7,7 @@ void ACDelegate::BeginPlay()
 
 	OnActorBeginOverlap.AddDynamic(this, &ACDelegate::BeginOverlap);
 	OnActorEndOverlap.AddDynamic(this, &ACDelegate::EndOverlap);
-
+	
 }
 
 void ACDelegate::BeginOverlap(AActor* OverlappedActor, AActor* OtherActor)

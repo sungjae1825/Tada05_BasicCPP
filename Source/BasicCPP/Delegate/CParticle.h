@@ -8,8 +8,8 @@ UCLASS()
 class BASICCPP_API ACParticle : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	ACParticle();
 
 protected:
@@ -20,8 +20,8 @@ private:
 
 private:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USceneComponent* RootComp;
+	USceneComponent* RootComp;
 
 	UPROPERTY(EditAnywhere, Category = "Particle")
-		UParticleSystem* Particles[3];
+	UParticleSystem* Particles[3];
 };

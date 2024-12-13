@@ -10,8 +10,8 @@ UCLASS()
 class BASICCPP_API ACSpotLight : public AActor
 {
 	GENERATED_BODY()
-
-public:
+	
+public:	
 	ACSpotLight();
 
 protected:
@@ -23,9 +23,9 @@ private:
 
 private:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USceneComponent* RootComp;
+	USceneComponent* RootComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USpotLightComponent* SpotLightComps[3];
+	USpotLightComponent* SpotLightComps[3];
 
 };

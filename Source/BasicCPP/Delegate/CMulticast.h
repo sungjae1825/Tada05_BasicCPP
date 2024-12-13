@@ -6,7 +6,6 @@
 
 DECLARE_MULTICAST_DELEGATE_TwoParams(FMulticastOverlap, int32, FLinearColor);
 
-
 UCLASS()
 class BASICCPP_API ACMulticast : public ACBoxBase
 {
@@ -14,7 +13,7 @@ class BASICCPP_API ACMulticast : public ACBoxBase
 
 protected:
 	virtual void BeginPlay() override;
-
+	
 private:
 	UFUNCTION()
 	void OnBeginOverlap(AActor* OverlappedActor, AActor* OtherActor);

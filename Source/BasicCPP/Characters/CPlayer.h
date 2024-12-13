@@ -2,14 +2,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Interfaces/CWeaponInterface.h"
 #include "CPlayer.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
-class AR4Class;
+class ACAR4;
 
 UCLASS()
-class BASICCPP_API ACPlayer : public ACharacter
+class BASICCPP_API ACPlayer : public ACharacter, public ICWeaponInterface
 {
 	GENERATED_BODY()
 
@@ -19,7 +20,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:
+public:	
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -32,22 +33,27 @@ private:
 
 	void OnSprint();
 	void OffSprint();
+
 	void OnRifle();
 
+public:
+	FORCEINLINE ACAR4* GetWeapon() { return AR4; };
 
 public:
 	UFUNCTION(BlueprintCallable)
-		void SetBodyColor(FLinearColor InColor);
+	void SetBodyColor(FLinearColor InColor);
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USpringArmComponent* SpringArmComp;
+	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		UCameraComponent* CameraComp;
+	UCameraComponent* CameraComp;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Weapons")
 	TSubclassOf<ACAR4> AR4Class;
+
+	ACAR4* AR4;
 
 };

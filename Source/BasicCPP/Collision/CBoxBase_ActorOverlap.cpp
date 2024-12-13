@@ -11,7 +11,7 @@ void ACBoxBase_ActorOverlap::BeginPlay()
 
 void ACBoxBase_ActorOverlap::ActorBeginOverlap(AActor* OverlappedActor, AActor* OtherActor)
 {
-	CLog::Log(FString(__FUNCTION__) + " called " + GetNameSafe(OtherActor));
+	CLog::Log(FString(__FUNCTION__) + " called " +  GetNameSafe(OtherActor));
 }
 
 void ACBoxBase_ActorOverlap::ActorEndOverlap(AActor* OverlappedActor, AActor* OtherActor)
