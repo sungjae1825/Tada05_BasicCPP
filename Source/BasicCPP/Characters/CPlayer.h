@@ -20,7 +20,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -36,23 +36,33 @@ private:
 
 	void OnRifle();
 
+	void OnAim();
+	void OffAim();
+
+protected:
+	UFUNCTION(BlueprintImplementableEvent)
+		void ZoomIn();
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void ZoomOut();
+
 public:
 	FORCEINLINE ACAR4* GetWeapon() { return AR4; };
 
 public:
 	UFUNCTION(BlueprintCallable)
-	void SetBodyColor(FLinearColor InColor);
+		void SetBodyColor(FLinearColor InColor);
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-	USpringArmComponent* SpringArmComp;
+		USpringArmComponent* SpringArmComp;
 
-	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-	UCameraComponent* CameraComp;
+	UPROPERTY(BlueprintReadOnly, VisibleDefaultsOnly, Category = "Components")
+		UCameraComponent* CameraComp;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Weapons")
-	TSubclassOf<ACAR4> AR4Class;
+		TSubclassOf<ACAR4> AR4Class;
 
 	ACAR4* AR4;
 
