@@ -12,19 +12,22 @@ class BASICCPP_API UCAnimInstance : public UAnimInstance
 protected:
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 	virtual void NativeBeginPlay() override;
-
+	
 protected:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "OwnerPawn")
-		float Speed;
+	float Speed;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "OwnerPawn")
-		float Direction;
+	float Direction;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "OwnerPawn")
-		bool bEquipped;
+	float Pitch;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "OwnerPawn")
-		bool bAiming;
+	bool bEquipped;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "OwnerPawn")
+	bool bAiming;
 
 private:
 	APawn* OwnerPawn;

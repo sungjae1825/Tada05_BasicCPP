@@ -10,6 +10,7 @@ void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 	Speed = OwnerPawn->GetVelocity().Size2D();
 	Direction = CalculateDirection(OwnerPawn->GetVelocity(), OwnerPawn->GetControlRotation());
+	Pitch = OwnerPawn->GetBaseAimRotation().Pitch;
 
 	ICWeaponInterface* OwnerInterface = Cast<ICWeaponInterface>(OwnerPawn);
 	if (!OwnerInterface) return;

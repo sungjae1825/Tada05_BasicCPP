@@ -8,6 +8,7 @@
 class USpringArmComponent;
 class UCameraComponent;
 class ACAR4;
+class UCCrossHairWidget;
 
 UCLASS()
 class BASICCPP_API ACPlayer : public ACharacter, public ICWeaponInterface
@@ -20,7 +21,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:
+public:	
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -39,31 +40,45 @@ private:
 	void OnAim();
 	void OffAim();
 
+	void OnFire();
+	void OffFire();
+
 protected:
 	UFUNCTION(BlueprintImplementableEvent)
-		void ZoomIn();
+	void ZoomIn();
 
 	UFUNCTION(BlueprintImplementableEvent)
-		void ZoomOut();
+	void ZoomOut();
 
 public:
 	FORCEINLINE ACAR4* GetWeapon() { return AR4; };
+	void GetAimInfo(FVector& OutAimStart, FVector& OutAimEnd, FVector& OutAimDirection) override;
+
+	void OnTarget() override;
+	void OffTarget() override;
 
 public:
 	UFUNCTION(BlueprintCallable)
-		void SetBodyColor(FLinearColor InColor);
+	void SetBodyColor(FLinearColor InColor);
+
+	UFUNCTION(Exec)
+	void VisibleCrossHairWidget(bool bVisible);
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
-		USpringArmComponent* SpringArmComp;
+	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(BlueprintReadOnly, VisibleDefaultsOnly, Category = "Components")
-		UCameraComponent* CameraComp;
+	UCameraComponent* CameraComp;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Weapons")
-		TSubclassOf<ACAR4> AR4Class;
+	TSubclassOf<ACAR4> AR4Class;
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<UCCrossHairWidget> CrossHairWidgetClass;
 
 	ACAR4* AR4;
+	UCCrossHairWidget* CrossHairWidget;
 
 };

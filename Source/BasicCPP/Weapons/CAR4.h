@@ -7,6 +7,9 @@
 class USkeletalMeshComponent;
 class ACharacter;
 class UAnimMontage;
+class ACBullet;
+class UParticleSystem;
+class USoundCue;
 
 UCLASS()
 class BASICCPP_API ACAR4 : public AActor
@@ -26,10 +29,10 @@ public:
 	FORCEINLINE bool IsEquipped() { return bEquipped; }
 	FORCEINLINE bool IsPlayingMontage() { return bPlayingMontage; }
 	FORCEINLINE bool IsAiming() { return bAiming; }
+	FORCEINLINE USkeletalMeshComponent* GetMeshComp() { return MeshComp; }
 
 	void Begin_Aim();
 	void End_Aim();
-
 
 	void Equip();
 	void Begin_Equip();
@@ -38,6 +41,13 @@ public:
 	void Unequip();
 	void Begin_Unequip();
 	void End_Unequip();
+
+	void Begin_Fire();
+	void End_Fire();
+
+	//Todo. 나중에 설명하겠음
+	UFUNCTION()
+		void Firing();
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Socket")
@@ -52,6 +62,24 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Montages")
 		UAnimMontage* UnequipMontage;
 
+	UPROPERTY(EditDefaultsOnly, Category = "CameraShake")
+		TSubclassOf<UCameraShake> FireCameraShakeClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effect")
+		TSubclassOf<ACBullet> BulletClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effect")
+		UParticleSystem* MuzzleVFX;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effect")
+		UParticleSystem* EjectVFX;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effect")
+		UParticleSystem* ImpactVFX;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effect")
+		USoundCue* FireSound;
+
 private:
 	UPROPERTY(VisibleDefaultsOnly, Category = "Components")
 		USkeletalMeshComponent* MeshComp;
@@ -62,4 +90,5 @@ private:
 	bool bEquipped;
 	bool bPlayingMontage;
 	bool bAiming;
+	bool bFiring;
 };
